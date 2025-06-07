@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+}
+.app {
+    padding: 0 10% 0 10%;
+    height: 100dvh;
+}
+.nav{
+    width: 100%;    
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 1px black solid;
+}
+.nav-title{
+    font-size: 2em;
+    width: 30%;
+    text-align: center;
+
+}
+.nav-menu{
+    font-size: 1.5em;
+    width: 70%;
+    text-align: center;
+}
+.nav-menu-item{
+
+}
+#main{
+
+}

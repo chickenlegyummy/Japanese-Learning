@@ -1,0 +1,19 @@
+{
+  "name": "japanese-learning",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "esbuild src/app.ts --bundle --outfile=public/bundle.js --sourcemap"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "esbuild": "^0.25.5"
+  }
+}

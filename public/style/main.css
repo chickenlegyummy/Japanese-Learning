@@ -11,7 +11,6 @@ body{
     display: flex;
     justify-content: space-between;
     position: relative;
-    border-bottom: 1px black solid;
 }
 .nav-title{
     font-size: 2em;
@@ -28,5 +27,38 @@ body{
 
 }
 #main{
+    justify-content: center;
+    display: flex;
+    width: 100%;
 
+}
+.indicator{
+    width: 50%;
+    height: 500px;
+    text-align: center;
+    align-content: center;
+}
+.indicator-text{
+    font-size: 10em;
+    height: 50%;
+}
+.indicator-answer{
+    display: flex;
+    justify-content: space-around;
+    font-size: 2em;
+}
+.indicator-answer-1,.indicator-answer-2,.indicator-answer-3{
+    border: 2px black solid;
+    width: 3em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.indicator-answer-1:hover,.indicator-answer-2:hover,.indicator-answer-3:hover{
+    border-radius: 10px;
+    background-color: rgb(226, 226, 226);
+    box-shadow: 4px 4px 29px -11px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 4px 4px 29px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 29px -11px rgba(0,0,0,0.75);
+    width: 2.8em;
 }

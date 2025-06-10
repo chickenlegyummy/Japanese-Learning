@@ -10,6 +10,7 @@ type character = {
   used: boolean;
 };
 
+let mode: number = 0;
 const dataset: character[] = [
   { hiragana: 'あ', katakana: 'ア', romaji: 'a', used: false },
   { hiragana: 'い', katakana: 'イ', romaji: 'i', used: false },
@@ -69,12 +70,37 @@ let ansList: string[] = ['', '', ''];
 let wheresAns: number;
 let correctedCounter: number = 0;
 let wrongCounter: number = 0;
-function initialField(){
+function initialField(mode: number){
   const i : number = Math.floor(Math.random() * 46);
-  const initQ : Question = {
-    indicator: dataset[i].hiragana,
-    ans: dataset[i].romaji
-  };
+  let initQ : Question = {indicator: "", ans: ""};
+  switch(mode){
+    case 0:
+      initQ = {
+        indicator: dataset[i].hiragana,
+        ans: dataset[i].romaji
+      };
+      break;
+    case 1:
+      initQ = {
+        indicator: dataset[i].katakana,
+        ans: dataset[i].romaji
+      };
+      break;
+    case 2:
+      let rn = Math.floor(Math.random() * 2)
+      if (rn == 0){
+        initQ = {
+          indicator: dataset[i].hiragana,
+          ans: dataset[i].romaji
+        };
+      } else {
+        initQ = {
+          indicator: dataset[i].katakana,
+          ans: dataset[i].romaji
+        };
+      }
+      break;
+  }
   dataset[i].used = true;
   if(indicatorText && indicatorAns1 && indicatorAns2 && indicatorAns3){
     indicatorText.textContent = initQ.indicator;
@@ -112,13 +138,32 @@ function checkAnsValid(id: number){
       wrongIndicator.textContent = wrongCounter.toString();
     }
   }
-  initialField();
+  initialField(mode);
 }
 
 indicatorAns1?.addEventListener('click', () => checkAnsValid(0));
 indicatorAns2?.addEventListener('click', () => checkAnsValid(1));
 indicatorAns3?.addEventListener('click', () => checkAnsValid(2));
 
-initialField();
+initialField(mode);
 
-
+let hiragana = document.getElementById("hiragana");
+let katakana = document.getElementById("katakana");
+let mixed = document.getElementById("mixed");
+if(hiragana && katakana && mixed){
+  hiragana.onclick = (_event) => {
+    history.pushState({}, "", "/hiragana");
+    mode = 0;
+    initialField(mode);
+  }
+  katakana.onclick = (_event) => {
+    history.pushState({}, "", "/katakana");
+    mode = 1;
+    initialField(mode);
+  }
+  mixed.onclick = (_event) => {
+    history.pushState({}, "", "/mixed");
+    mode = 2;
+    initialField(mode);
+  }
+}

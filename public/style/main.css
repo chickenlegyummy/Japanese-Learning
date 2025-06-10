@@ -62,3 +62,13 @@ body{
     -moz-box-shadow: 4px 4px 29px -11px rgba(0,0,0,0.75);
     width: 2.8em;
 }
+
+a{
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+}
+
+a:hover{
+    color: blueviolet;
+}

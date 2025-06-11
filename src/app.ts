@@ -164,19 +164,19 @@ let mixed = document.getElementById("mixed");
 
 if(hiragana && katakana && mixed){
   hiragana.onclick = (_event) => {
-    history.pushState({}, "", "/Japanese-Learning/hiragana");
+    history.pushState({}, "", "/Japanese-Learning/hiragana.html");
     mode = 0;
     initialField(mode);
     removeSelected(hiragana)
   }
   katakana.onclick = (_event) => {
-    history.pushState({}, "", "/Japanese-Learning/katakana");
+    history.pushState({}, "", "/Japanese-Learning/katakana.html");
     mode = 1;
     initialField(mode);
     removeSelected(katakana)
   }
   mixed.onclick = (_event) => {
-    history.pushState({}, "", "/Japanese-Learning/mixed");
+    history.pushState({}, "", "/Japanese-Learning/mixed.html");
     mode = 2;
     initialField(mode);
     removeSelected(mixed)

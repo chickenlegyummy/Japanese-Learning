@@ -30,10 +30,9 @@ body{
     justify-content: center;
     display: flex;
     width: 100%;
-
 }
 .indicator{
-    width: 100%;
+    width: 50%;
     height: 500px;
     text-align: center;
     align-content: center;
@@ -70,4 +69,10 @@ a{
 
 .selected{
     color: darkred;
+}
+
+@media (max-width: 800px) {
+    .indicator {
+        width: 100%;
+    }
 }

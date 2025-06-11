@@ -1,4 +1,9 @@
-npm run dev
-npm i
-npx tsc --init
+Set-up: 
+npm i 
 npm install --save-dev typescript ts-node @types/node @types/express
+npx tsc --init
+
+Run:
+npm run dev - run dev mode and compile app.ts into bundle 
+npx tsc - compile all typescript files (mainly for index.ts)
+npm start - run the web server (recommend using this instead of "Open with Live Server")

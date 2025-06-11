@@ -75,18 +75,23 @@ function initialField(mode: number){
   let initQ : Question = {indicator: "", ans: ""};
   switch(mode){
     case 0:
+      document.title = "假名道場 | 平假名";
       initQ = {
         indicator: dataset[i].hiragana,
         ans: dataset[i].romaji
       };
+      
       break;
     case 1:
+      document.title = "假名道場 | 片假名";
       initQ = {
         indicator: dataset[i].katakana,
         ans: dataset[i].romaji
       };
+      
       break;
     case 2:
+      document.title = "假名道場 | 混合";
       let rn = Math.floor(Math.random() * 2)
       if (rn == 0){
         initQ = {
@@ -98,7 +103,7 @@ function initialField(mode: number){
           indicator: dataset[i].katakana,
           ans: dataset[i].romaji
         };
-      }
+      };
       break;
   }
   dataset[i].used = true;
@@ -147,23 +152,50 @@ indicatorAns3?.addEventListener('click', () => checkAnsValid(2));
 
 initialField(mode);
 
+function removeSelected(obj: any){
+  if(document.getElementsByClassName('selected')[0])
+    document.getElementsByClassName('selected')[0].classList.remove('selected')
+  obj.classList.add('selected')
+}
+
 let hiragana = document.getElementById("hiragana");
 let katakana = document.getElementById("katakana");
 let mixed = document.getElementById("mixed");
+
 if(hiragana && katakana && mixed){
   hiragana.onclick = (_event) => {
     history.pushState({}, "", "/hiragana");
     mode = 0;
     initialField(mode);
+    removeSelected(hiragana)
   }
   katakana.onclick = (_event) => {
     history.pushState({}, "", "/katakana");
     mode = 1;
     initialField(mode);
+    removeSelected(katakana)
   }
   mixed.onclick = (_event) => {
     history.pushState({}, "", "/mixed");
     mode = 2;
     initialField(mode);
+    removeSelected(mixed)
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const currentUrl = window.location.href;
+  if (currentUrl.includes('/hiragana')) {
+    console.log('Client: hiragana detected');
+    mode = 0;
+    initialField(mode);
+  } else if (currentUrl.includes('/katakana')) {
+    console.log('Client: katakana detected');
+    mode = 1;
+    initialField(mode);
+  } else if (currentUrl.includes('/mixed')) {
+    console.log('Client: mixed detected');
+    mode = 2;
+    initialField(mode);
+  }
+})

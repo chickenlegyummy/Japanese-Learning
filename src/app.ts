@@ -70,9 +70,9 @@ let ansList: string[] = ['', '', ''];
 let wheresAns: number;
 let correctedCounter: number = 0;
 let wrongCounter: number = 0;
+let initQ : Question = {indicator: "", ans: ""};
 function initialField(mode: number){
   const i : number = Math.floor(Math.random() * 46);
-  let initQ : Question = {indicator: "", ans: ""};
   switch(mode){
     case 0:
       document.title = "假名道場 | 平假名";
@@ -128,8 +128,9 @@ function initialField(mode: number){
 }
 
 
-let correctIndicator = document.getElementById('correct-indicator')
-let wrongIndicator = document.getElementById('wrong-indicator')
+let correctIndicator = document.getElementById('correct-indicator');
+let wrongIndicator = document.getElementById('wrong-indicator');
+let correctAnsIndicator = document.getElementById('answer-indicator');
 
 function checkAnsValid(id: number){
   if (id == wheresAns){
@@ -139,8 +140,9 @@ function checkAnsValid(id: number){
     }
   } else {
     wrongCounter++;
-    if (wrongIndicator){
+    if (wrongIndicator && correctAnsIndicator){
       wrongIndicator.textContent = wrongCounter.toString();
+      correctAnsIndicator.textContent = `${initQ.indicator} ${initQ.ans}`
     }
   }
   initialField(mode);

@@ -65,9 +65,9 @@
       var wheresAns;
       var correctedCounter = 0;
       var wrongCounter = 0;
+      var initQ = { indicator: "", ans: "" };
       function initialField(mode2) {
         const i = Math.floor(Math.random() * 46);
-        let initQ = { indicator: "", ans: "" };
         switch (mode2) {
           case 0:
             document.title = "\u5047\u540D\u9053\u5834 | \u5E73\u5047\u540D";
@@ -124,6 +124,7 @@
       }
       var correctIndicator = document.getElementById("correct-indicator");
       var wrongIndicator = document.getElementById("wrong-indicator");
+      var correctAnsIndicator = document.getElementById("answer-indicator");
       function checkAnsValid(id) {
         if (id == wheresAns) {
           correctedCounter++;
@@ -132,8 +133,9 @@
           }
         } else {
           wrongCounter++;
-          if (wrongIndicator) {
+          if (wrongIndicator && correctAnsIndicator) {
             wrongIndicator.textContent = wrongCounter.toString();
+            correctAnsIndicator.textContent = `${initQ.indicator} ${initQ.ans}`;
           }
         }
         initialField(mode);
